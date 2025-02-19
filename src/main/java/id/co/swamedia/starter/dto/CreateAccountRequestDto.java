@@ -14,15 +14,15 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CreateAccountRequestDto {
     
-    @NotBlank(message = "Username is required.")
+    @NotBlank(message = "{validation.username.notblank}")
     private String username;
 
-    @NotBlank(message = "Password is required.")
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$", message = "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character.")
+    @NotBlank(message = "{validation.password.notblank}")
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$", message = "{validation.password.pattern}")
     private String password;
 
-    @NotBlank(message = "Email is required.")
-    @Email(message = "Email is invalid.")
+    @NotBlank(message = "{validation.email.notblank}")
+    @Email(message = "{validation.email.invalid}")
     private String email;
 
 }

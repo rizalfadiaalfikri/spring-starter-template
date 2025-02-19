@@ -1,8 +1,8 @@
 package id.co.swamedia.starter.constant;
 
 public class ResponseMessage {
-    
-    public ResponseMessage() {
+
+    private ResponseMessage() {
     }
 
     public static final String ERR_DUPLICATE_KEY_EXCEPTION = "Data already exists. Duplicate entry is not allowed.";

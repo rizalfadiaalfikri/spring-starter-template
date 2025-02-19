@@ -1,6 +1,5 @@
 package id.co.swamedia.starter.exception;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -8,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.client.HttpServerErrorException.InternalServerError;
 
 import id.co.swamedia.starter.constant.ResponseMessage;
 import id.co.swamedia.starter.dto.ErrorResponseDto;
