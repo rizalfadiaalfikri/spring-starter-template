@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import id.co.swamedia.starter.dto.ApiResponseDto;
+import id.co.swamedia.starter.dto.BaseRequestDto;
 import id.co.swamedia.starter.dto.CreateAccountRequestDto;
 import id.co.swamedia.starter.exception.AccessDeniedException;
 import id.co.swamedia.starter.exception.AuthenticationException;
@@ -19,7 +20,7 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/test")
 public class TestController {
-    
+
     @GetMapping("/duplicate")
     public ResponseEntity<ApiResponseDto> duplicateKey() {
         throw new DuplicateKeyException("duplicate");
@@ -51,8 +52,13 @@ public class TestController {
     }
 
     @PostMapping("/createAccount")
-    public ResponseEntity<ApiResponseDto> createAccount(@Valid @RequestBody CreateAccountRequestDto createAccountRequestDto) {
-        return ResponseEntity.ok(ApiResponseDto.builder().status(200).success(true).message("Account created successfully.").build());
+    public ResponseEntity<ApiResponseDto> createAccount(
+            @Valid @RequestBody BaseRequestDto<CreateAccountRequestDto> request) {
+        return ResponseEntity.ok(ApiResponseDto.builder()
+                .status(200)
+                .success(true)
+                .message("Account created successfully.")
+                .build());
     }
 
 }
