@@ -1,5 +1,6 @@
 package id.co.swamedia.starter.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,6 +13,9 @@ import io.swagger.v3.oas.models.security.SecurityScheme.Type;
 @Configuration
 public class SwaggerConfig {
 
+    @Value("${application.version}")
+    private String version;
+
     @Bean
     public OpenAPI openAPI() {
         return new OpenAPI()
@@ -20,7 +24,7 @@ public class SwaggerConfig {
                 .info(new Info()
                         .title("Spring Boot API")
                         .description("Spring Boot API")
-                        .version("1.0.0"));
+                        .version(version));
     }
 
 }

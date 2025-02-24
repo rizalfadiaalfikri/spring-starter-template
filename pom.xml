@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>id.co.swamedia</groupId>
 	<artifactId>starter</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>starter</name>
 	<description>Springboot starter template</description>
 	<url/>

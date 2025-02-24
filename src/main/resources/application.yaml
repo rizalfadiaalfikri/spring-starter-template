@@ -14,3 +14,7 @@ management:
 springdoc:
   api-docs:
     path: /springboot-starter-template/v3/api-docs
+
+application:
+  name: starter
+  version: @project.version@
