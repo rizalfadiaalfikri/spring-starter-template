@@ -1,4 +1,4 @@
-package id.co.swamedia.starter.dto;
+package id.co.swamedia.starter.dto.response;
 
 import lombok.Builder;
 import lombok.Data;
@@ -10,5 +10,5 @@ public class ApiResponseDto {
     private boolean success;
     private String message;
     private Object data;
-    private PaginationDto pagination;
+    private PaginationResponseDto pagination;
 }

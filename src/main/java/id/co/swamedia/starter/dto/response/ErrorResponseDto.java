@@ -1,4 +1,4 @@
-package id.co.swamedia.starter.dto;
+package id.co.swamedia.starter.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class ErrorResponseDto {
-    
+
     private int status;
 
     private boolean success;

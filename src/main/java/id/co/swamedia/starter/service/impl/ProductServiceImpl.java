@@ -1,7 +1,7 @@
 package id.co.swamedia.starter.service.impl;
 
-import id.co.swamedia.starter.dto.PaginationDto;
-import id.co.swamedia.starter.dto.PaginationRequestDto;
+import id.co.swamedia.starter.dto.request.PaginationRequestDto;
+import id.co.swamedia.starter.dto.response.PaginationResponseDto;
 import id.co.swamedia.starter.entity.Product;
 import id.co.swamedia.starter.repository.ProductRepository;
 import id.co.swamedia.starter.service.ProductService;
@@ -14,9 +14,9 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
-    
+
     private final ProductRepository productRepository;
-    
+
     @Override
     public Page<Product> getAllProducts(PaginationRequestDto pagination) {
         Sort sort = Sort.by(
@@ -28,8 +28,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public PaginationDto createPaginationResponse(Page<?> page, PaginationRequestDto request) {
-        return PaginationDto.builder()
+    public PaginationResponseDto createPaginationResponse(Page<?> page, PaginationRequestDto request) {
+        return PaginationResponseDto.builder()
                 .page(request.getPage())
                 .size(request.getSize())
                 .totalPages(page.getTotalPages())

@@ -1,4 +1,4 @@
-package id.co.swamedia.starter.dto;
+package id.co.swamedia.starter.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
