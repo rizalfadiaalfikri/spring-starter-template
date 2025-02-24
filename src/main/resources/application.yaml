@@ -4,3 +4,13 @@ server:
 spring:
   application:
     name: starter
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+springdoc:
+  api-docs:
+    path: /springboot-starter-template/v3/api-docs
