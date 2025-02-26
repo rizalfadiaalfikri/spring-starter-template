@@ -11,9 +11,26 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import id.co.swamedia.starter.constant.ResponseMessage;
 import id.co.swamedia.starter.dto.response.ErrorResponseDto;
 
+/**
+ * Global exception handler for handling various exceptions across the application.
+ * <p>
+ * This class uses {@link ControllerAdvice} to centralize exception handling and return
+ * appropriate HTTP responses based on the type of exception.
+ * </p>
+ *
+ * @author [Your Name]
+ * @version 1.0.0
+ * @since [yyyy-mm-dd]
+ */
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    /**
+     * Handles {@link DuplicateKeyException} when a duplicate key is encountered in the database.
+     *
+     * @param ex the exception thrown
+     * @return a {@link ResponseEntity} with HTTP 409 Conflict status and error details
+     */
     @ExceptionHandler(DuplicateKeyException.class)
     public ResponseEntity<Object> handleDuplicateKeyException(DuplicateKeyException ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(
@@ -25,6 +42,12 @@ public class GlobalExceptionHandler {
                         .build());
     }
 
+    /**
+     * Handles {@link RowNotFoundException} when a requested database row is not found.
+     *
+     * @param ex the exception thrown
+     * @return a {@link ResponseEntity} with HTTP 404 Not Found status and error details
+     */
     @ExceptionHandler(RowNotFoundException.class)
     public ResponseEntity<Object> handleRowNotFoundException(RowNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(
@@ -36,6 +59,12 @@ public class GlobalExceptionHandler {
                         .build());
     }
 
+    /**
+     * Handles {@link BadRequestException} when a bad request is encountered.
+     *
+     * @param ex the exception thrown
+     * @return a {@link ResponseEntity} with HTTP 400 Bad Request status and error details
+     */
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<Object> handleBadRequestException(BadRequestException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
@@ -47,6 +76,12 @@ public class GlobalExceptionHandler {
                         .build());
     }
 
+    /**
+     * Handles {@link AuthenticationException} when authentication fails.
+     *
+     * @param ex the exception thrown
+     * @return a {@link ResponseEntity} with HTTP 401 Unauthorized status and error details
+     */
     @ExceptionHandler(AuthenticationException.class)
     public ResponseEntity<Object> handleAuthenticationException(AuthenticationException ex) {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(
@@ -58,6 +93,12 @@ public class GlobalExceptionHandler {
                         .build());
     }
 
+    /**
+     * Handles {@link AccessDeniedException} when access is denied.
+     *
+     * @param ex the exception thrown
+     * @return a {@link ResponseEntity} with HTTP 403 Forbidden status and error details
+     */
     @ExceptionHandler(AccessDeniedException.class)
     public ResponseEntity<Object> handleAccessDeniedException(AccessDeniedException ex) {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(
@@ -69,6 +110,12 @@ public class GlobalExceptionHandler {
                         .build());
     }
 
+    /**
+     * Handles {@link MethodArgumentNotValidException} when validation errors occur.
+     *
+     * @param ex the exception thrown
+     * @return a {@link ResponseEntity} with HTTP 400 Bad Request status and detailed validation errors
+     */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
         List<String> errors = ex.getBindingResult()
@@ -91,6 +138,12 @@ public class GlobalExceptionHandler {
                         .build());
     }
 
+    /**
+     * Handles generic {@link Exception} when an unexpected error occurs.
+     *
+     * @param ex the exception thrown
+     * @return a {@link ResponseEntity} with HTTP 500 Internal Server Error status and error details
+     */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleInternalServerErrorException(Exception ex) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(

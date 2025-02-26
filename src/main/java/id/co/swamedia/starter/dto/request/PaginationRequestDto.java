@@ -6,8 +6,18 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Min;
 import lombok.Data;
 
+
+/**
+ * Data Transfer Object (DTO) for handling pagination requests.
+ * Defines pagination properties such as page number, size, sorting field, and sort direction.
+ *
+ * @author [Your Name]
+ * @version 1.0.0
+ * @since [yyyy-mm-dd]
+ */
 @Data
 public class PaginationRequestDto {
+
     @Min(1)
     @Schema(description = "Page number (starts from 1)", example = "1", defaultValue = "1")
     private int page = 1;

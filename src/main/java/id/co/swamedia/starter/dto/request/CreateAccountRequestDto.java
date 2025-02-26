@@ -8,6 +8,19 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Data Transfer Object (DTO) for creating a new account.
+ * This class is used to capture the necessary information
+ * required to register a new user.
+ * <p>
+ * It includes validation annotations to ensure that the provided
+ * data meets the required format and constraints.
+ * </p>
+ *
+ * @author [Your Name]
+ * @version 1.0.0
+ * @since [yyyy-mm-dd]
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

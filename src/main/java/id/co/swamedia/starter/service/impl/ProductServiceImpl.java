@@ -11,12 +11,29 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+/**
+ * Implementation of {@link ProductService} for managing product-related operations.
+ * This service provides methods to retrieve paginated products and generate pagination responses.
+ *
+ * @author [Your Name]
+ * @version 1.0.0
+ * @since [yyyy-mm-dd]
+ */
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
+    /**
+     * Repository for accessing product data.
+     */
     private final ProductRepository productRepository;
 
+    /**
+     * Retrieves a paginated list of products based on the given pagination request.
+     *
+     * @param pagination the pagination request containing page number, size, sort field, and direction
+     * @return a {@link Page} containing the paginated list of {@link Product} entities
+     */
     @Override
     public Page<Product> getAllProducts(PaginationRequestDto pagination) {
         Sort sort = Sort.by(
@@ -27,6 +44,13 @@ public class ProductServiceImpl implements ProductService {
                 PageRequest.of(pagination.getPageForSpring(), pagination.getSize(), sort));
     }
 
+    /**
+     * Creates a pagination response DTO from a given paginated result.
+     *
+     * @param page    the paginated data
+     * @param request the original pagination request
+     * @return a {@link PaginationResponseDto} containing pagination details
+     */
     @Override
     public PaginationResponseDto createPaginationResponse(Page<?> page, PaginationRequestDto request) {
         return PaginationResponseDto.builder()
@@ -36,4 +60,5 @@ public class ProductServiceImpl implements ProductService {
                 .totalItems(page.getTotalElements())
                 .build();
     }
+
 }
